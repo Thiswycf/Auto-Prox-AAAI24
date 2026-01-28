@@ -35,12 +35,12 @@ OPTIM:
 TRAIN:
   DATASET: imagenet-10p-subset
   SPLIT: train
-  BATCH_SIZE: 128
+  BATCH_SIZE: 32
   MIXED_PRECISION: True
 TEST:
   DATASET: imagenet-10p-subset
   SPLIT: val
-  BATCH_SIZE: 200
+  BATCH_SIZE: 32
 PROXY_DATASET: imagenet
 NUM_GPUS: 1
 DATA_LOADER:

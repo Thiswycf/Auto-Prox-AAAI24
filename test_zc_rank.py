@@ -1,12 +1,10 @@
 import argparse
-import copy
 import gc
 import math
 import pycls.core.config as config
 from pycls.core.config import cfg
 from pycls.datasets.loader import _DATASETS
 import pycls.core.logging as logging
-import random
 from typing import Union
 import time
 import os
@@ -17,11 +15,10 @@ import pycls.datasets.loader as data_loader
 import torch
 from torch import Tensor
 from pycls.predictor.pruners.predictive import find_measures
-from autozc.structures import GraphStructure, LinearStructure, TreeStructure
 from pycls.models.build import MODEL
-from autozc.utils.rank_consistency import kendalltau, pearson, spearman
+from pycls.predictor.utils.rank_consistency import kendalltau, pearson, spearman
 
-
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 
 logger = logging.get_logger(__name__)
 
@@ -36,19 +33,26 @@ def build_model(arch_config, cfg, num_classes):
     return model
 
 
-def obtain_gt(load_results):
-    data_num = len(load_results[0].keys()) // 2
-    arch_pop = []
-    acc_pop = [[] for _ in range(data_num)]
-    for item in load_results:
-        arch_pop.append(item['arch'])
-        for i in range(data_num):
-            if i != 0:
-                key = list(load_results[0].keys())[2 * i]
-                acc_pop[i-1].append(item['{}'.format(key)])
-            if i == data_num-1:
-                key = list(load_results[0].keys())[-1]
-                acc_pop[-1].append(item['{}'.format(key)])
+def obtain_gt(load_results, dataset='cifar100', acc_type='kd'):
+    # data_num = len(load_results[0].keys()) // 2
+    # arch_pop = []
+    # acc_pop = [[] for _ in range(data_num)]
+    # for item in load_results:
+    #     arch_pop.append(item['arch'])
+    #     for i in range(data_num):
+    #         if i != 0:
+    #             key = list(load_results[0].keys())[2 * i]
+    #             acc_pop[i-1].append(item['{}'.format(key)])
+    #         if i == data_num-1:
+    #             key = list(load_results[0].keys())[-1]
+    #             acc_pop[-1].append(item['{}'.format(key)])
+    _dict = {
+        'cifar100': 'c100',
+        'flowers': 'flower',
+        'chaoyang': 'chaoyang',
+    }
+    arch_pop = [it['arch'] for it in load_results]
+    acc_pop = [it[f'{_dict[dataset]}_{acc_type}_acc'] for it in load_results]
     return arch_pop, acc_pop
 
 
@@ -163,38 +167,15 @@ def other_fitness(cfg, data_loader, arch_pop, acc_pop, zc_name, num_classes):
 
 
 def auto_prox_rank(cfg, arch_pop, acc_pop, data_loader, struct):
-
-    if cfg.PROXY_DATASET == 'all':
-        logger.info(f'len(data_loader): {len(data_loader)}')
-        for i in range(len(acc_pop)):
-            classes =[100, 102, 4, 1000]
-
-            single_kendall, single_spearman, single_pearson = auto_prox_fitness(cfg, data_loader[i], arch_pop, acc_pop[i], struct, num_classes=classes[i])
-            logger.info(f'Rank consistency on dataset {list(_DATASETS.keys())[i]}: kendall: {single_kendall}, spearman: {single_spearman}, pearson: {single_pearson}')
-
-    else:
-        index = list(_DATASETS.keys()).index(cfg.PROXY_DATASET)
-        kendall_score, spearman_score, pearson_score = auto_prox_fitness(cfg, data_loader, arch_pop, acc_pop[index], struct, num_classes=cfg.MODEL.NUM_CLASSES)
-        logger.info(f'Rank consistency on dataset {cfg.PROXY_DATASET}: kendall: {kendall_score}, spearman: {spearman_score}, pearson: {pearson_score}')
+    kendall_score, spearman_score, pearson_score = auto_prox_fitness(cfg, data_loader, arch_pop, acc_pop, struct, num_classes=cfg.MODEL.NUM_CLASSES)
+    logger.info(f'Rank consistency on dataset {cfg.PROXY_DATASET}: kendall: {kendall_score}, spearman: {spearman_score}, pearson: {pearson_score}')
 
 
 
 
 def other_rank(cfg, data_loader, arch_pop, acc_pop, zc_name):
-
-    if cfg.PROXY_DATASET == 'all':
-        for i in range(len(acc_pop)):
-            classes =[100, 102, 4, 1000]
-
-            single_kendall, single_spearman, single_pearson = other_fitness(cfg, data_loader[i], arch_pop, acc_pop[i], zc_name, classes[i])
-            logger.info(f'Rank consistency on dataset {list(_DATASETS.keys())[i]}: kendall: {single_kendall}, spearman: {single_spearman}, pearson: {single_pearson}')
-
-
-    else:
-        index = list(_DATASETS.keys()).index(cfg.PROXY_DATASET)
-        kendall_score, spearman_score, pearson_score = other_fitness(cfg, data_loader, arch_pop, acc_pop[index], zc_name, num_classes=cfg.MODEL.NUM_CLASSES)
-
-        logger.info(f'Rank consistency on dataset {cfg.PROXY_DATASET}: kendall: {kendall_score}, spearman: {spearman_score}, pearson: {pearson_score}')
+    kendall_score, spearman_score, pearson_score = other_fitness(cfg, data_loader, arch_pop, acc_pop, zc_name, num_classes=cfg.MODEL.NUM_CLASSES)
+    logger.info(f'Rank consistency on dataset {cfg.PROXY_DATASET}: kendall: {kendall_score}, spearman: {spearman_score}, pearson: {pearson_score}')
 
 
 
@@ -219,15 +200,30 @@ if __name__ == '__main__':
         help=  'size, epe_nas, grasp, snip, ntk, fisher, synflow, dss, (nwot is not included with memory oom)'
     )
 
+    parser.add_argument(
+        '--ds',
+        default='cifar100',
+        type=str,
+        help=  'flowers, cifar100, chaoyang'
+    )
+
+    parser.add_argument(
+        '--acc_type',
+        default='kd',
+        type=str,
+        help=  'base, kd'
+    )
+
 
 
     args = parser.parse_args()
     config.load_cfg(args.refer_cfg)
     config.assert_cfg()
+    args.save_dir = os.path.join(args.save_dir, cfg.MODEL.TYPE, args.ds, args.acc_type)
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir, exist_ok=True)
 
-
+    cfg.PROXY_DATASET = args.ds
 
     logging.setup_logging()
     time_str = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime(time.time()))
@@ -246,7 +242,8 @@ if __name__ == '__main__':
     logger.info(message)
 
     gt_results = torch.load(args.gt_path)
-    arch_pop, acc_pop = obtain_gt(gt_results)
+    arch_pop, acc_pop = obtain_gt(gt_results, args.ds, args.acc_type)
+
 
     data_loader = data_loader.construct_proxy_loader()
 

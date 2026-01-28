@@ -1,0 +1,6 @@
+save_dir            : ./work_dirs/rank/AutoFormerSub/cifar100/kd
+gt_path             : ./gt_results/gt_autoformer_2.pth
+refer_cfg           : ./configs/auto/rank/autoformer/autoformer_tree_c100_kd.yaml
+other_zc            : None
+ds                  : cifar100
+acc_type            : kd

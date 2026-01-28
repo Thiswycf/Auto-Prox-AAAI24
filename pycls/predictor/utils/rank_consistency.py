@@ -42,12 +42,12 @@ def pearson(true_vector, pred_vector):
 
 
 def kendalltau(true_vector, pred_vector):
-    tau, p_value = scipy.stats.kendalltau(true_vector, pred_vector)
+    tau, p_value = scipy.stats.kendalltau(true_vector, pred_vector, nan_policy='omit')
     return tau
 
 
 def spearman(true_vector, pred_vector):
-    coef, p_value = scipy.stats.spearmanr(true_vector, pred_vector)
+    coef, p_value = scipy.stats.spearmanr(true_vector, pred_vector, nan_policy='omit')
     return coef
 
 

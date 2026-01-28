@@ -1,0 +1,37 @@
+input_geno:
+- ntk
+- nwot
+- dss
+op_geno:
+- - 1.7943094077948676
+  - 1.482341324533748
+  - 0.8929086279814323
+repr_geno: INPUT:(ntk,nwot,dss)TREE:(log|sigmoid)BINARY:(element_wise_sum)
+results:
+  fitness: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    RFusVf8l5z8=
+  kendall: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    RFusVf8l5z8=
+  pearson: 0.9010956143813792
+  spearman: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    7hCagtyf7D8=
+type: tree

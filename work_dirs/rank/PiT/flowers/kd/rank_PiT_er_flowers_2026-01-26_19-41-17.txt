@@ -1,0 +1,12 @@
+save_dir            : ./work_dirs/rank/PiT/flowers/kd
+gt_path             : ./gt_results/gt_pit.pth
+refer_cfg           : configs/auto/pit/pit-ti_flowers_kd.yaml
+other_zc            : er
+ds                  : flowers
+acc_type            : kd
+Build er ....
+The 0-th PiT arch:, er score: 294.1078486442566
+The 1-th PiT arch:, er score: 336.3758523464203
+The 2-th PiT arch:, er score: 331.265109539032
+The 3-th PiT arch:, er score: 209.28227496147156
+The 4-th PiT arch:, er score: 272.33932971954346

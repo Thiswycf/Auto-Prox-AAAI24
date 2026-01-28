@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from ..build import MODEL
 from pycls.core.config import cfg
-from timm.models.layers import DropPath,  trunc_normal_
+from timm.layers import DropPath,  trunc_normal_
 import numpy as np
 from .base import BaseTransformerModel
 from .common import PatchEmbedding, TransformerLayer, layernorm

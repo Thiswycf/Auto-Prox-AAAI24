@@ -1,0 +1,72 @@
+save_dir            : ./work_dirs/rank/AutoFormerSub/cifar100/kd
+gt_path             : ./gt_results/gt_autoformer_2.pth
+refer_cfg           : ./configs/auto/autoformer/autoformer-ti-subnet_c100_kd.yaml
+other_zc            : er
+ds                  : cifar100
+acc_type            : kd
+Build er ....
+The 0-th AutoFormerSub arch:, er score: 1413.3731842041016
+The 1-th AutoFormerSub arch:, er score: 1506.0871887207031
+The 2-th AutoFormerSub arch:, er score: 1362.8599166870117
+The 3-th AutoFormerSub arch:, er score: 1413.1278991699219
+The 4-th AutoFormerSub arch:, er score: 1263.439224243164
+The 5-th AutoFormerSub arch:, er score: 1504.0920944213867
+The 6-th AutoFormerSub arch:, er score: 1221.9965057373047
+The 7-th AutoFormerSub arch:, er score: 1405.9506072998047
+The 8-th AutoFormerSub arch:, er score: 1305.1088562011719
+The 9-th AutoFormerSub arch:, er score: 1313.3688049316406
+The 10-th AutoFormerSub arch:, er score: 1214.545883178711
+The 11-th AutoFormerSub arch:, er score: 1310.7116241455078
+The 12-th AutoFormerSub arch:, er score: 1316.183334350586
+The 13-th AutoFormerSub arch:, er score: 1408.286636352539
+The 14-th AutoFormerSub arch:, er score: 1511.189453125
+The 15-th AutoFormerSub arch:, er score: 1310.588478088379
+The 16-th AutoFormerSub arch:, er score: 1402.2997436523438
+The 17-th AutoFormerSub arch:, er score: 1411.222038269043
+The 18-th AutoFormerSub arch:, er score: 1216.961181640625
+The 19-th AutoFormerSub arch:, er score: 1414.3321914672852
+The 20-th AutoFormerSub arch:, er score: 1310.6522827148438
+The 21-th AutoFormerSub arch:, er score: 1302.9989624023438
+The 22-th AutoFormerSub arch:, er score: 1217.5282516479492
+The 23-th AutoFormerSub arch:, er score: 1312.5268783569336
+The 24-th AutoFormerSub arch:, er score: 1403.0951461791992
+The 25-th AutoFormerSub arch:, er score: 1406.574478149414
+The 26-th AutoFormerSub arch:, er score: 1465.5110092163086
+The 27-th AutoFormerSub arch:, er score: 1218.7841567993164
+The 28-th AutoFormerSub arch:, er score: 1407.5885620117188
+The 29-th AutoFormerSub arch:, er score: 1409.3745651245117
+The 30-th AutoFormerSub arch:, er score: 1214.3231811523438
+The 31-th AutoFormerSub arch:, er score: 1314.3532180786133
+The 32-th AutoFormerSub arch:, er score: 1268.4163665771484
+The 33-th AutoFormerSub arch:, er score: 1304.560775756836
+The 34-th AutoFormerSub arch:, er score: 1306.2771606445312
+The 35-th AutoFormerSub arch:, er score: 1412.0938186645508
+The 36-th AutoFormerSub arch:, er score: 1311.7562713623047
+The 37-th AutoFormerSub arch:, er score: 1264.166976928711
+The 38-th AutoFormerSub arch:, er score: 1305.7401962280273
+The 39-th AutoFormerSub arch:, er score: 1267.2880935668945
+The 40-th AutoFormerSub arch:, er score: 1412.678337097168
+The 41-th AutoFormerSub arch:, er score: 1216.7697448730469
+The 42-th AutoFormerSub arch:, er score: 1309.9377899169922
+The 43-th AutoFormerSub arch:, er score: 1406.0658416748047
+The 44-th AutoFormerSub arch:, er score: 1362.1400909423828
+The 45-th AutoFormerSub arch:, er score: 1366.057632446289
+The 46-th AutoFormerSub arch:, er score: 1309.744972229004
+The 47-th AutoFormerSub arch:, er score: 1312.6441955566406
+The 48-th AutoFormerSub arch:, er score: 1510.1612243652344
+The 49-th AutoFormerSub arch:, er score: 1265.235122680664
+The 50-th AutoFormerSub arch:, er score: 1409.2155227661133
+The 51-th AutoFormerSub arch:, er score: 1458.8495407104492
+The 52-th AutoFormerSub arch:, er score: 1310.3751525878906
+The 53-th AutoFormerSub arch:, er score: 1214.4124145507812
+The 54-th AutoFormerSub arch:, er score: 1508.4344940185547
+The 55-th AutoFormerSub arch:, er score: 1464.997657775879
+The 56-th AutoFormerSub arch:, er score: 1511.714096069336
+The 57-th AutoFormerSub arch:, er score: 1221.341941833496
+The 58-th AutoFormerSub arch:, er score: 1464.746109008789
+The 59-th AutoFormerSub arch:, er score: 1509.07861328125
+The 60-th AutoFormerSub arch:, er score: 1412.0625305175781
+The 61-th AutoFormerSub arch:, er score: 1263.6440505981445
+The 62-th AutoFormerSub arch:, er score: 1366.799057006836
+The 63-th AutoFormerSub arch:, er score: 1265.944595336914
+The 64-th AutoFormerSub arch:, er score: 1407.6560516357422

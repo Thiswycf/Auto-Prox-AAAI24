@@ -1,0 +1,6 @@
+save_dir            : ./work_dirs/rank/AutoFormerSub_kd
+gt_path             : gt_results/gt_autoformer.pth
+refer_cfg           : ./configs/auto/autoformer/autoformer-ti-subnet_chaoyang_base.yaml
+other_zc            : er
+ds                  : chaoyang
+acc_type            : kd

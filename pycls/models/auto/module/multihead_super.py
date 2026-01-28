@@ -4,7 +4,7 @@ from torch.nn import Parameter
 import torch.nn.functional as F
 from .Linear_super import LinearSuper
 from .qkv_super import qkv_super
-from timm.models.layers import trunc_normal_
+from timm.layers import trunc_normal_
 
 
 def softmax(x, dim, onnx_trace=False):

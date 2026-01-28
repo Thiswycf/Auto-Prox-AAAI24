@@ -1,0 +1,14 @@
+save_dir            : ./work_dirs/rank/AutoFormerSub/cifar100/kd
+gt_path             : ./gt_results/gt_autoformer_2.pth
+refer_cfg           : ./configs/auto/autoformer/autoformer-ti-subnet_c100_kd.yaml
+other_zc            : er
+ds                  : cifar100
+acc_type            : kd
+Build er ....
+The 0-th AutoFormerSub arch:, er score: 1415.2040328979492
+The 1-th AutoFormerSub arch:, er score: 1506.5274505615234
+The 2-th AutoFormerSub arch:, er score: 1363.9382019042969
+The 3-th AutoFormerSub arch:, er score: 1407.873161315918
+The 4-th AutoFormerSub arch:, er score: 1263.7560272216797
+The 5-th AutoFormerSub arch:, er score: 1500.1322631835938
+The 6-th AutoFormerSub arch:, er score: 1221.4232711791992

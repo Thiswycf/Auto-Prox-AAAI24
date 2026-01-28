@@ -6,7 +6,7 @@ https://github.com/whai362/PVT/blob/v2/classification/pvt_v2.py
 import math
 import torch
 import torch.nn as nn
-from timm.models.layers import DropPath, to_2tuple, trunc_normal_
+from timm.layers import DropPath, to_2tuple, trunc_normal_
 
 from ..build import MODEL
 from .common import layernorm

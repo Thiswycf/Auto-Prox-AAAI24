@@ -80,11 +80,11 @@ PROXY_DATASET: flowers
 RESNET:
   TRANS_FUN: basic_transform
 TEST:
-  BATCH_SIZE: 200
+  BATCH_SIZE: 32
   DATASET: flowers
   SPLIT: test
 TRAIN:
-  BATCH_SIZE: 128
+  BATCH_SIZE: 32
   DATASET: flowers
   SPLIT: train
 TRANSFORMER:

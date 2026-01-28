@@ -1,0 +1,40 @@
+save_dir            : ./work_dirs/rank/PiT/cifar100/base
+gt_path             : ./gt_results/gt_pit.pth
+refer_cfg           : configs/auto/pit/pit-ti_c100_base.yaml
+other_zc            : er
+ds                  : cifar100
+acc_type            : base
+Build er ....
+The 0-th PiT arch:, er score: 301.51654291152954
+The 1-th PiT arch:, er score: 364.2559965848923
+The 2-th PiT arch:, er score: 328.23196172714233
+The 3-th PiT arch:, er score: 202.66457629203796
+The 4-th PiT arch:, er score: 281.83153772354126
+The 5-th PiT arch:, er score: 348.6958284378052
+The 6-th PiT arch:, er score: 472.29675555229187
+The 7-th PiT arch:, er score: 353.5769296884537
+The 8-th PiT arch:, er score: 795.1264868974686
+The 9-th PiT arch:, er score: 280.6869566440582
+The 10-th PiT arch:, er score: 476.86384093761444
+The 11-th PiT arch:, er score: 333.4927110671997
+The 12-th PiT arch:, er score: 296.87131547927856
+The 13-th PiT arch:, er score: 333.55982208251953
+The 14-th PiT arch:, er score: 346.955041885376
+The 15-th PiT arch:, er score: 247.45657014846802
+The 16-th PiT arch:, er score: 388.138179063797
+The 17-th PiT arch:, er score: 271.8499855995178
+The 18-th PiT arch:, er score: 422.7791373729706
+The 19-th PiT arch:, er score: 391.5492157936096
+The 20-th PiT arch:, er score: 515.2231783866882
+The 21-th PiT arch:, er score: 619.3538281917572
+The 22-th PiT arch:, er score: 546.8624544143677
+The 23-th PiT arch:, er score: 567.8790941238403
+The 24-th PiT arch:, er score: 540.5315616130829
+The 25-th PiT arch:, er score: 400.31269431114197
+The 26-th PiT arch:, er score: 352.29721105098724
+The 27-th PiT arch:, er score: 430.73280251026154
+The 28-th PiT arch:, er score: 410.4559876918793
+The 29-th PiT arch:, er score: 185.76457405090332
+The 30-th PiT arch:, er score: 279.02147901058197
+The 31-th PiT arch:, er score: 196.76719748973846
+The 32-th PiT arch:, er score: 500.61708426475525

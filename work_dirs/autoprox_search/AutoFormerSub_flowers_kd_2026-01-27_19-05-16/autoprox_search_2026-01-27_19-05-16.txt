@@ -1,0 +1,39 @@
+==================================================
+Auto-Prox Search with er in Search Space
+==================================================
+Model: AutoFormerSub
+Dataset: flowers
+Accuracy type: kd
+Generations: 3
+Population size: 5
+Loaded 100 architectures
+Starting Auto-Prox search with er in search space...
+Generation 1/3
+Evaluating candidate 1/5: ['ntk', 'nwot', 'dss']
+New best candidate found! Fitness: 0.7234, Kendall: 0.7234, Spearman: 0.8945, Pearson: 0.9011
+Evaluating candidate 2/5: ['dss', 't4g']
+Evaluating candidate 3/5: ['dss', 'nwot']
+Evaluating candidate 4/5: ['er', 'snip', 't2']
+Evaluating candidate 5/5: ['er', 'fisher']
+Generation 2/3
+Evaluating candidate 1/5: ['ntk', 'nwot', 'dss']
+Evaluating candidate 2/5: ['er', 'fisher']
+Evaluating candidate 3/5: ['er', 'dss']
+Evaluating candidate 4/5: ['ntk', 't4g', 'nwot']
+Evaluating candidate 5/5: ['t2', 'ntk', 't4g']
+Generation 3/3
+Evaluating candidate 1/5: ['ntk', 'nwot', 'dss']
+Evaluating candidate 2/5: ['t2', 'ntk', 't4g']
+Evaluating candidate 3/5: ['ntk', 'nwot', 'dss']
+Evaluating candidate 4/5: ['t2', 'ntk', 't4g']
+Evaluating candidate 5/5: ['t4g', 'nwot', 'snip']
+==================================================
+Search Completed!
+==================================================
+Best candidate: {'input_geno': ['ntk', 'nwot', 'dss'], 'op_geno': [[1.7943094077948676, 1.482341324533748, 0.8929086279814323]], 'repr_geno': 'INPUT:(ntk,nwot,dss)TREE:(log|sigmoid)BINARY:(element_wise_sum)', 'type': 'tree', 'results': {'kendall': 0.7233883546167381, 'spearman': 0.8945143271271527, 'pearson': 0.9010956143813792, 'fitness': 0.7233883546167381}}
+Best fitness (Kendall): 0.7234
+Kendall: 0.7234
+Spearman: 0.8945
+Pearson: 0.9011
+Time cost: 10.43 hours
+Best candidate saved to: work_dirs/autoprox_search/AutoFormerSub_flowers_kd_2026-01-27_19-05-16/best_candidate.yaml

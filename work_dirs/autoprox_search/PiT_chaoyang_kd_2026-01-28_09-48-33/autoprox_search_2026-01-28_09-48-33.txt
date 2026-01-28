@@ -1,0 +1,14 @@
+==================================================
+Auto-Prox Search with er in Search Space
+==================================================
+Model: PiT
+Dataset: chaoyang
+Accuracy type: kd
+Generations: 3
+Population size: 5
+[2026-01-28_09-48-33] Loaded 100 architectures
+Starting Auto-Prox search with er in search space...
+[2026-01-28_09-48-34] Generation 1/3
+[2026-01-28_09-48-34] Evaluating candidate 1/5: ['nwot', 'fisher']
+[2026-01-28_09-49-20] Evaluating candidate 2/5: ['er', 't2']
+[2026-01-28_09-49-26] Evaluating candidate 3/5: ['t4g', 'fisher']

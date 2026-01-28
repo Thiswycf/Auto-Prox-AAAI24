@@ -11,7 +11,7 @@ import math
 import torch
 import torch.nn as nn
 from einops import rearrange
-from timm.models.layers import trunc_normal_
+from timm.layers import trunc_normal_
 
 from ..build import MODEL
 from pycls.core.config import cfg

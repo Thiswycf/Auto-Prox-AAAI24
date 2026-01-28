@@ -1,0 +1,247 @@
+AUTOFORMER_MODE: super
+AUTOFORMER_SEARCH_SPACE:
+  DEPTH:
+  - 12
+  - 13
+  - 14
+  HIDDEN_DIM:
+  - 192
+  - 216
+  - 240
+  MLP_RATIO:
+  - 3.5
+  - 4.0
+  NUM_HEADS:
+  - 3
+  - 4
+AUTOFORMER_SUBNET:
+  DEPTH: null
+  HIDDEN_DIM: null
+  MLP_RATIO: null
+  NUM_HEADS: null
+AUTO_PROX:
+  input_geno: null
+  op_geno: null
+  repr_geno: null
+  type: null
+CFG_DEST: config.yaml
+CNN:
+  ACTIVATION_FUN: relu
+  ACTIVATION_INPLACE: true
+  BN_EPS: 1.0e-05
+  BN_MOMENTUM: 0.1
+  DEPTH: 56
+  ZERO_INIT_FINAL_BN_GAMMA: false
+CONVIT:
+  LOCALITY_STRENGTH: 1.0
+  LOCAL_LAYERS: 10
+CUDNN:
+  BENCHMARK: false
+CVT:
+  KERNEL_QKV:
+  - 3
+  - 3
+  - 3
+  PADDING_KV:
+  - 1
+  - 1
+  - 1
+  PADDING_Q:
+  - 1
+  - 1
+  - 1
+  QKV_PROJ_METHOD:
+  - dw_bn
+  - dw_bn
+  - dw_bn
+  STRIDE_KV:
+  - 2
+  - 2
+  - 2
+  STRIDE_Q:
+  - 1
+  - 1
+  - 1
+  WITH_CLS_TOKEN:
+  - false
+  - false
+  - true
+DATA_LOADER:
+  NUM_WORKERS: 4
+  PIN_MEMORY: true
+DESC: ''
+DISTILLATION:
+  ENABLE_INTER: false
+  ENABLE_LOGIT: false
+  FEATURE_FILE: null
+  INTER_LOSS: l2
+  INTER_STUDENT_INDEX: []
+  INTER_TEACHER_INDEX: []
+  INTER_TRANSFORM: linear
+  INTER_WEIGHT: 2.5
+  LOGIT_LOSS: soft
+  LOGIT_TEMP: 1.0
+  LOGIT_WEIGHT: 0.5
+  OFFLINE: false
+  TEACHER_IMG_SIZE: 32
+  TEACHER_MODEL: ResNet
+  TEACHER_WEIGHTS: null
+DIST_BACKEND: nccl
+DOWNLOAD_CACHE: /tmp/pycls-download-cache
+HOST: localhost
+LAUNCH:
+  COMMENT: ''
+  CPUS_PER_GPU: 10
+  EMAIL: ''
+  GPU_TYPE: volta
+  MAX_RETRY: 3
+  MEM_PER_GPU: 60
+  MODE: local
+  NAME: pycls_job
+  PARTITION: devlab
+  TIME_LIMIT: 4200
+LOG_DEST: stdout
+LOG_PERIOD: 10
+MAX_GPUS_PER_NODE: 8
+MODEL:
+  IMG_SIZE: 224
+  IN_CHANNELS: 3
+  LOSS_FUN: cross_entropy
+  NUM_CLASSES: 100
+  TYPE: PiT
+NUM_GPUS: 1
+OPTIM:
+  BASE_LR: 0.0005
+  BETA1: 0.9
+  BETA2: 0.999
+  DAMPENING: 0.0
+  EMA_ALPHA: 1.0e-05
+  EMA_UPDATE_PERIOD: 0
+  HEAD_LR_RATIO: 1.0
+  LR_MULT: 0.1
+  LR_POLICY: cos
+  MAX_EPOCH: 300
+  MIN_LR: 5.0e-06
+  MOMENTUM: 0.9
+  NESTEROV: true
+  OPTIMIZER: adamw
+  STEPS: []
+  WARMUP_EPOCHS: 20
+  WARMUP_FACTOR: 0.001
+  WEIGHT_DECAY: 0.05
+OUT_DIR: /home/lqz25zhj/vscode/Auto-Prox-AAAI24/work_dirs/correlation/pit/c100/base
+PIT:
+  STRIDE: 8
+PIT_SEARCH_SPACE:
+  BASE_DIM:
+  - 16
+  - 24
+  - 32
+  - 40
+  DEPTH:
+  - - 1
+    - 2
+    - 3
+  - - 4
+    - 6
+    - 8
+  - - 2
+    - 4
+    - 6
+  MLP_RATIO:
+  - 2
+  - 4
+  - 6
+  - 8
+  NUM_HEADS:
+  - - 2
+    - 4
+    - 8
+  - - 2
+    - 4
+    - 8
+  - - 2
+    - 4
+    - 8
+PIT_SUBNET:
+  BASE_DIM: 40
+  DEPTH:
+  - 2
+  - 4
+  - 4
+  MLP_RATIO: 2
+  NUM_HEADS:
+  - 2
+  - 4
+  - 8
+PORT_RANGE:
+- 10000
+- 65000
+PREC_TIME:
+  NUM_ITER: 30
+  WARMUP_ITER: 3
+PROXY_DATASET: null
+PVT:
+  SR_RATIO:
+  - 8
+  - 4
+  - 2
+  - 1
+RESNET:
+  NUM_GROUPS: 1
+  STRIDE_1X1: true
+  TRANS_FUN: basic_transform
+  WIDTH_PER_GROUP: 64
+RNG_SEED: 1
+T2T:
+  KERNEL_SIZE:
+  - 7
+  - 3
+  - 3
+  PADDING:
+  - 2
+  - 1
+  - 1
+  STRIDE:
+  - 4
+  - 2
+  - 2
+  TOKEN_DIM: 64
+TEST:
+  BATCH_SIZE: 200
+  DATASET: cifar100
+  SPLIT: test
+  WEIGHTS: ''
+TRAIN:
+  AUTO_RESUME: true
+  BATCH_SIZE: 128
+  CUTMIX_ALPHA: 0.0
+  DATASET: cifar100
+  LABEL_SMOOTHING: 0.0
+  MIXED_PRECISION: false
+  MIXUP_ALPHA: 0.0
+  SPLIT: train
+  STRONG_AUGMENTATION: true
+  WEIGHTS: ''
+TRANSFORMER:
+  ATTENTION_DROP_RATE: 0.0
+  DEPTH:
+  - 2
+  - 6
+  - 4
+  DROP_PATH_RATE: 0.1
+  DROP_RATE: 0.0
+  HIDDEN_DIM:
+  - 64
+  - 128
+  - 256
+  LN_EPS: 1.0e-06
+  MLP_RATIO: 4
+  NUM_HEADS:
+  - 2
+  - 4
+  - 8
+  PATCH_PADDING: null
+  PATCH_SIZE: 16
+  PATCH_STRIDE: null
+VERBOSE: true

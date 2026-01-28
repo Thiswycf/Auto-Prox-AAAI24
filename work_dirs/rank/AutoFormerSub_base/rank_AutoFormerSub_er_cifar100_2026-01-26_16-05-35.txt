@@ -1,0 +1,25 @@
+save_dir            : ./work_dirs/rank/AutoFormerSub_base
+gt_path             : ./gt_results/gt_autoformer.pth
+refer_cfg           : ./configs/auto/autoformer/autoformer-ti-subnet_c100_base.yaml
+other_zc            : er
+ds                  : cifar100
+acc_type            : base
+Build er ....
+The 0-th AutoFormerSub arch:, er score: 1224.0967330932617
+The 1-th AutoFormerSub arch:, er score: 1513.1783294677734
+The 2-th AutoFormerSub arch:, er score: 1418.0870666503906
+The 3-th AutoFormerSub arch:, er score: 1468.6144790649414
+The 4-th AutoFormerSub arch:, er score: 1313.3908233642578
+The 5-th AutoFormerSub arch:, er score: 1418.5008850097656
+The 6-th AutoFormerSub arch:, er score: 1415.7617263793945
+The 7-th AutoFormerSub arch:, er score: 1377.3056716918945
+The 8-th AutoFormerSub arch:, er score: 1222.4041748046875
+The 9-th AutoFormerSub arch:, er score: 1514.5695724487305
+The 10-th AutoFormerSub arch:, er score: 1412.5666580200195
+The 11-th AutoFormerSub arch:, er score: 1225.3799591064453
+The 12-th AutoFormerSub arch:, er score: 1221.2765808105469
+The 13-th AutoFormerSub arch:, er score: 1314.3930206298828
+The 14-th AutoFormerSub arch:, er score: 1417.8059387207031
+The 15-th AutoFormerSub arch:, er score: 1522.1716003417969
+The 16-th AutoFormerSub arch:, er score: 1268.5149383544922
+The 17-th AutoFormerSub arch:, er score: 1524.499038696289

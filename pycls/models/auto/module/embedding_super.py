@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 # from model.utils import to_2tuple
-from timm.models.layers import to_2tuple
+from timm.layers import to_2tuple
 import numpy as np
 
 class PatchembedSuper(nn.Module):

@@ -63,11 +63,11 @@ OPTIM:
   WEIGHT_DECAY: 0.05
 OUT_DIR: work_dirs/GT/autoformer-ti-subnet_c100_base/AF-0
 TEST:
-  BATCH_SIZE: 200
+  BATCH_SIZE: 32
   DATASET: cifar100
   SPLIT: test
 TRAIN:
-  BATCH_SIZE: 128
+  BATCH_SIZE: 32
   DATASET: cifar100
   SPLIT: train
 TRANSFORMER:

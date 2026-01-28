@@ -30,12 +30,13 @@ _DATASETS = {
     'imagenet': ImageNet,
 }
 
-_DATA_DIR = os.path.join('.', 'data')
+# Use the existing data directory from the user
+_DATA_DIR = '/home/lqz25zhj/data'
 if not os.path.exists(_DATA_DIR):
     os.makedirs(_DATA_DIR)
 
 _PATHS = {
-    'cifar100': '',
+    'cifar100': 'cifar100',
     'flowers': 'flowers',
     'chaoyang': 'chaoyang',
     # 'imagenet': 'ImageNet',
@@ -104,18 +105,40 @@ def construct_proxy_loader():
         shuffle=True,
         drop_last=True,
     )
-    imagenet_loader = _construct_loader(
-        dataset_name='imagenet',
-        split='train',
-        batch_size=128,
-        shuffle=True,
-        drop_last=True,
-    )
+    # imagenet_loader = _construct_loader(
+    #     dataset_name='imagenet',
+    #     split='train',
+    #     batch_size=128,
+    #     shuffle=True,
+    #     drop_last=True,
+    # )
     if cfg.PROXY_DATASET == 'all' and cfg.MODEL.TYPE == 'AutoFormerSub':
-        return c100_loader, flower_loader, chaoyang_loader, imagenet_loader
+        return c100_loader, flower_loader, chaoyang_loader # , imagenet_loader
     elif cfg.PROXY_DATASET == 'all' and cfg.MODEL.TYPE == 'PiT':
+        c100_loader = _construct_loader(
+            dataset_name='cifar100',
+            split='train',
+            batch_size=128,
+            shuffle=True,
+            drop_last=True,
+        )
+        flower_loader = _construct_loader(
+            dataset_name='flowers',
+            split='train',
+            batch_size=128,
+            shuffle=True,
+            drop_last=True,
+        )
+        chaoyang_loader = _construct_loader(
+            dataset_name='chaoyang',
+            split='train',
+            batch_size=128,
+            shuffle=True,
+            drop_last=True,
+        )
         return c100_loader, flower_loader, chaoyang_loader
     else:
+        # print(cfg.PROXY_DATASET, cfg.MODEL.TYPE)
         return _construct_loader(
             dataset_name=cfg.PROXY_DATASET,
             split=cfg.TRAIN.SPLIT,

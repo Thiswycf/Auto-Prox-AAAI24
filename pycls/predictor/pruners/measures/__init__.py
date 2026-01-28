@@ -79,6 +79,7 @@ def load_all():
     from . import synflow  # noqa: F401
     from . import zen  # noqa: F401
     from . import zico  # noqa: F401
+    from . import er  # noqa: F401
     from . import dss
     from . import tvt
     from . import diswot

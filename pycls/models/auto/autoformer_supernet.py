@@ -9,7 +9,7 @@ from .module.Linear_super import LinearSuper
 from .module.layernorm_super import LayerNormSuper
 from .module.multihead_super import AttentionSuper
 from .module.embedding_super import PatchembedSuper
-from timm.models.layers import DropPath,  trunc_normal_
+from timm.layers import DropPath,  trunc_normal_
 import numpy as np
 from .base import BaseTransformerModel
 

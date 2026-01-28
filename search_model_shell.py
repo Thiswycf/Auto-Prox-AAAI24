@@ -1,28 +1,19 @@
 import argparse
 import copy
-import gc
 import csv
 import shutil
 import pycls.core.config as config
 from pycls.core.config import cfg
-from pycls.datasets.loader import _DATASETS
 import pycls.core.logging as logging
 import yaml
 import random
-from typing import Union
 import time
 import os
 import subprocess
-import torch.nn.functional as F
 from pycls.models.build import MODEL
-import numpy as np
 import pycls.datasets.loader as data_loader
-import torch
-from torch import Tensor
-from pycls.predictor.pruners.predictive import find_measures
-from autozc.structures import GraphStructure, LinearStructure, TreeStructure
 from pycls.models.build import MODEL
-from autozc.utils.rank_consistency import kendalltau, pearson, spearman
+from pycls.predictor.utils.rank_consistency import kendalltau, pearson, spearman
 
 
 
@@ -203,10 +194,18 @@ if __name__ == '__main__':
     parser.add_argument("--pit_up", default=22, type=float, help="pit param upper limit")
     parser.add_argument("--pit_low", default=4, type=float, help="pit param lower limit")
 
+    parser.add_argument(
+        '--ds',
+        default='cifar100',
+        type=str,
+        help=  'flowers, cifar100, chaoyang'
+    )
+
     args = parser.parse_args()
     config.load_cfg(args.refer_cfg)
     config.assert_cfg()
 
+    cfg.PROXY_DATASET = args.ds
 
 
 

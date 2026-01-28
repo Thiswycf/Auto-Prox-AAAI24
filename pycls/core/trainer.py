@@ -308,13 +308,16 @@ def rank_model():
     arch_id = cfg.OUT_DIR.split('/')[-1]
     data = []
     # data.append(arch_id)
-    dimensions = ['logits_entropy',  'zico', 'grad_conflict', 'grad_angle', 'size', 'epe_nas',
-              'jacov', 'nwot', 'grasp', 'snip', 'ntk', 'entropy', 'fisher', 'grad_norm', 'l2_norm',  'plain',
-              'synflow', 'zen', 'dss', 'mixup']
+    # 只测试er代理
+    dimensions = ['er']
     for dimension in dimensions:
-        score = compute_zc_score(model, zc_name=dimension, dataloader=test_loader)
-        logger.info("Current Model 's {} Score is : {}".format(dimension, score))
-        data.append(float(score))
+        try:
+            score = compute_zc_score(model, zc_name=dimension, dataloader=test_loader)
+            logger.info("Current Model 's {} Score is : {}".format(dimension, score))
+            data.append(float(score))
+        except Exception as e:
+            logger.error("Error computing {} score: {}".format(dimension, e))
+            data.append(0.0)
     with open('score.csv', mode='a', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
         # write the header

@@ -10,7 +10,7 @@ from pycls.predictor.pruners.predictive import find_measures
 from pycls.models.build import MODEL
 from pycls.models.distill import DistillationWrapper
 from autozc.structures import GraphStructure, LinearStructure, TreeStructure
-from proxy_zc import auto_prox_fitness, other_fitness
+from test_zc_rank import auto_prox_fitness, other_fitness
 import torch
 import time
 import gc

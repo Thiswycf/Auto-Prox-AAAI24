@@ -19,6 +19,7 @@ import gc
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np
 
 from . import measures
 from .measures.model_stats import get_model_stats
@@ -145,6 +146,13 @@ def find_measures(
     # this function returns an array of zero-cost proxy metrics.
 
     def sum_arr(arr):
+        # Handle scalar values
+        if isinstance(arr, (float, int, np.number)):
+            return float(arr)
+        # Handle torch tensors
+        if isinstance(arr, torch.Tensor):
+            return torch.sum(arr).item()
+        # Handle iterable objects
         sum = 0.0
         for i in range(len(arr)):
             sum += torch.sum(arr[i])
@@ -181,7 +189,7 @@ def find_measures(
                 'jacov', 'epe_nas', 'nwot', 'zen', 'bn_score', 'mixup', 'size',
                 'grad_angle', 'grad_conflict', 'zico', 'mgm', 'entropy', 'ntk',
                 'linear_region', 'condnum', 'ntk_trace', 'nst',
-                'jacobian_trace', 'logits_entropy', 'hessian_trace', 'tvt', 'diswot',
+                'jacobian_trace', 'logits_entropy', 'hessian_trace', 'tvt', 'diswot', 'er',
         ]:
             measure_score = v
         else:
