@@ -1,0 +1,41 @@
+==================================================
+Auto-Prox Search with er in Search Space
+==================================================
+Model: PiT
+Dataset: cifar100
+Accuracy type: kd
+Generations: 3
+Population size: 5
+[2026-01-28_15-42-15] Loaded 100 architectures
+Starting Auto-Prox search with er in search space...
+[2026-01-28_15-42-18] Generation 1/3
+[2026-01-28_15-42-18] Evaluating candidate 1/5: ['dss', 'er', 'fisher']
+[2026-01-28_15-42-29] Evaluating candidate 2/5: ['fisher', 'ntk']
+[2026-01-28_16-00-45] New best candidate found! Fitness: 0.7411, Kendall: 0.7411, Spearman: 0.9147, Pearson: 0.6949
+[2026-01-28_16-00-45] Evaluating candidate 3/5: ['fisher', 'er', 't4g']
+[2026-01-28_16-01-33] Evaluating candidate 4/5: ['er', 'dss', 't4g']
+[2026-01-28_16-02-21] Evaluating candidate 5/5: ['t2', 'nwot', 'er']
+[2026-01-28_16-23-32] New best candidate found! Fitness: 0.8057, Kendall: 0.8057, Spearman: 0.9513, Pearson: 0.7971
+[2026-01-28_16-23-32] Generation 2/3
+[2026-01-28_16-23-32] Evaluating candidate 1/5: ['t2', 'nwot', 'er']
+[2026-01-28_16-45-23] New best candidate found! Fitness: 0.8142, Kendall: 0.8142, Spearman: 0.9523, Pearson: 0.8054
+[2026-01-28_16-45-23] Evaluating candidate 2/5: ['fisher', 'ntk']
+[2026-01-28_17-03-15] Evaluating candidate 3/5: ['fisher', 'ntk']
+[2026-01-28_17-20-47] Evaluating candidate 4/5: ['t2', 'nwot', 'er']
+[2026-01-28_17-43-00] Evaluating candidate 5/5: ['t2', 'nwot', 'er']
+[2026-01-28_17-43-53] Generation 3/3
+[2026-01-28_17-43-53] Evaluating candidate 1/5: ['t2', 'nwot', 'er']
+[2026-01-28_18-06-26] New best candidate found! Fitness: 0.8288, Kendall: 0.8288, Spearman: 0.9590, Pearson: 0.8134
+[2026-01-28_18-06-26] Evaluating candidate 2/5: ['t2', 'nwot', 'er']
+[2026-01-28_18-28-12] Evaluating candidate 3/5: ['dss', 'nwot', 'fisher']
+[2026-01-28_18-53-08] Evaluating candidate 4/5: ['t2', 'nwot', 'er']
+[2026-01-28_18-53-19] Evaluating candidate 5/5: ['t2', 'nwot', 'er']
+[2026-01-28_19-14-21] Search Completed!
+==================================================
+Best candidate: {'input_geno': ['t2', 'nwot', 'er'], 'op_geno': [[0.2195358260546435, 0.4672683363862846, 0.20705258818169658]], 'repr_geno': 'INPUT:(t2,nwot,er)TREE:(log|abs|frobenius_norm)BINARY:(element_wise_sum)', 'type': 'tree', 'results': {'kendall': 0.8287852746913555, 'spearman': 0.9590091632366398, 'pearson': 0.8133536693140846, 'fitness': 0.8287852746913555}}
+Best fitness (Kendall): 0.8288
+Kendall: 0.8288
+Spearman: 0.9590
+Pearson: 0.8134
+Time cost: 3.53 hours
+Best candidate saved to: work_dirs/autoprox_search/PiT_cifar100_kd_2026-01-28_15-42-15/best_candidate.yaml

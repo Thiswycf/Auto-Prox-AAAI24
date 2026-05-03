@@ -1,0 +1,35 @@
+input_geno:
+- er
+- nwot
+op_geno:
+- - 1.8949746089575463
+  - 0.8093293427920583
+repr_geno: INPUT:(er,nwot)TREE:(element_wise_square)BINARY:(element_wise_sub)
+results:
+  fitness: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    Zz+KyeFN6j8=
+  kendall: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    Zz+KyeFN6j8=
+  pearson: 0.9080796191664124
+  spearman: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    WNdochOE7j8=
+type: tree

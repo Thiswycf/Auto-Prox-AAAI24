@@ -1,0 +1,39 @@
+==================================================
+Auto-Prox Search with er in Search Space
+==================================================
+Model: PiT
+Dataset: flowers
+Accuracy type: kd
+Generations: 3
+Population size: 5
+[2026-01-28_18-59-06] Loaded 100 architectures
+Starting Auto-Prox search with er in search space...
+[2026-01-28_18-59-08] Generation 1/3
+[2026-01-28_18-59-08] Evaluating candidate 1/5: ['er', 'ntk', 'dss']
+[2026-01-28_18-59-17] Evaluating candidate 2/5: ['er', 'nwot']
+[2026-01-28_18-59-25] Evaluating candidate 3/5: ['fisher', 't2', 'er']
+[2026-01-28_18-59-34] Evaluating candidate 4/5: ['er', 't2', 'fisher']
+[2026-01-28_19-21-06] New best candidate found! Fitness: 0.8183, Kendall: 0.8183, Spearman: 0.9564, Pearson: 0.6260
+[2026-01-28_19-21-06] Evaluating candidate 5/5: ['er', 't4g', 'ntk']
+[2026-01-28_19-21-54] Generation 2/3
+[2026-01-28_19-21-54] Evaluating candidate 1/5: ['er', 't2', 'fisher']
+[2026-01-28_19-43-42] Evaluating candidate 2/5: ['fisher', 'nwot', 't2']
+[2026-01-28_20-11-31] Evaluating candidate 3/5: ['er', 't2', 'fisher']
+[2026-01-28_20-33-24] Evaluating candidate 4/5: ['er', 't2', 'fisher']
+[2026-01-28_20-33-35] Evaluating candidate 5/5: ['er', 't2', 'fisher']
+[2026-01-28_20-55-53] New best candidate found! Fitness: 0.8344, Kendall: 0.8344, Spearman: 0.9633, Pearson: 0.6241
+[2026-01-28_20-55-53] Generation 3/3
+[2026-01-28_20-55-53] Evaluating candidate 1/5: ['er', 't2', 'fisher']
+[2026-01-28_21-18-22] Evaluating candidate 2/5: ['er', 't2', 'fisher']
+[2026-01-28_21-41-08] Evaluating candidate 3/5: ['er', 't2', 'fisher']
+[2026-01-28_21-41-19] Evaluating candidate 4/5: ['ntk', 'dss', 'fisher']
+[2026-01-28_21-41-29] Evaluating candidate 5/5: ['er', 't2', 'fisher']
+[2026-01-28_22-05-29] Search Completed!
+==================================================
+Best candidate: {'input_geno': ['er', 't2', 'fisher'], 'op_geno': [[1.8072792097889765, 0.8682798367483334, 0.9456607895330632]], 'repr_geno': 'INPUT:(er,t2,fisher)TREE:(element_wise_square)BINARY:(element_wise_mul)', 'type': 'tree', 'results': {'kendall': 0.8344452716892478, 'spearman': 0.9632876681009068, 'pearson': 0.6240744780805595, 'fitness': 0.8344452716892478}}
+Best fitness (Kendall): 0.8344
+Kendall: 0.8344
+Spearman: 0.9633
+Pearson: 0.6241
+Time cost: 3.11 hours
+Best candidate saved to: work_dirs/autoprox_search/PiT_flowers_kd_2026-01-28_18-59-06/best_candidate.yaml

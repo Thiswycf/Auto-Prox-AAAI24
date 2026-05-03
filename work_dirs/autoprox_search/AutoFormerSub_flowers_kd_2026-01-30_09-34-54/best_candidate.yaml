@@ -1,0 +1,37 @@
+input_geno:
+- er
+- t2
+- nwot
+op_geno:
+- - 1.5096997319581764
+  - 0.28758438482938775
+  - 1.4431643013807032
+repr_geno: INPUT:(er,t2,nwot)TREE:(frobenius_norm)BINARY:(element_wise_mul)
+results:
+  fitness: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    lE0MPHn45j8=
+  kendall: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    lE0MPHn45j8=
+  pearson: 0.8871873535361205
+  spearman: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    MUqeFS+J7D8=
+type: tree

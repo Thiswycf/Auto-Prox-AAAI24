@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export CUDA_DEVICE_ORDER="PCI_BUS_ID"
-export CUDA_VISIBLE_DEVICES="4"
+export CUDA_VISIBLE_DEVICES="0"
 
 set -e
 
@@ -17,15 +17,7 @@ conda activate ERT-NAS
 #     --acc_type kd \
 #     --num_generations 3 \
 #     --pop_size 5 \
-#     --save_dir work_dirs/autoprox_search
-
-# conda run -n ERT-NAS python search_autoprox_with_er.py \
-#     --gt_path ./gt_results/gt_autoformer_2.pth \
-#     --refer_cfg ./configs/auto/autoformer/autoformer-ti-subnet_flowers_kd.yaml \
-#     --ds flowers \
-#     --acc_type kd \
-#     --num_generations 3 \
-#     --pop_size 5 \
+#     --expected_kt 0.56 \
 #     --save_dir work_dirs/autoprox_search
     
 conda run -n ERT-NAS python search_autoprox_with_er.py \
@@ -35,6 +27,17 @@ conda run -n ERT-NAS python search_autoprox_with_er.py \
     --acc_type kd \
     --num_generations 3 \
     --pop_size 5 \
+    --expected_kt 0.34 \
+    --save_dir work_dirs/autoprox_search
+
+conda run -n ERT-NAS python search_autoprox_with_er.py \
+    --gt_path ./gt_results/gt_autoformer_2.pth \
+    --refer_cfg ./configs/auto/autoformer/autoformer-ti-subnet_flowers_kd.yaml \
+    --ds flowers \
+    --acc_type kd \
+    --num_generations 3 \
+    --pop_size 5 \
+    --expected_kt 0.70 \
     --save_dir work_dirs/autoprox_search
 
 echo "Auto-Prox search completed!"

@@ -15,7 +15,7 @@ import torch
 import time
 import yaml
 import copy
-
+import shutil
 
 logger = logging.get_logger(__name__)
 
@@ -40,10 +40,9 @@ def generate_autoprox_candidates(num_candidates=100):
         num_inputs = random.randint(2, 3)
         input_zcps = random.sample(available_zcps, num_inputs)
         
-        # Ensure er is included in some candidates
-        if random.random() < 0.5:  # 50% chance to include er
-            if 'er' not in input_zcps:
-                input_zcps[0] = 'er'
+        # Ensure er is included in candidates
+        if 'er' not in input_zcps:
+            input_zcps[0] = 'er'
         
         # Generate tree structure
         num_ops = random.randint(1, 3)
@@ -104,7 +103,7 @@ def evaluate_candidate(cfg, candidate, arch_pop, acc_pop, data_loader, num_class
         return None
 
 
-def search_autoprox(cfg, arch_pop, acc_pop, data_loader, num_classes, num_generations=10, pop_size=20):
+def search_autoprox(cfg, arch_pop, acc_pop, data_loader, num_classes, num_generations=10, pop_size=20, expected_kt=0.0):
     """Evolutionary search for optimal Auto-Prox formula."""
     logger.info("Starting Auto-Prox search with er in search space...")
     
@@ -138,6 +137,8 @@ def search_autoprox(cfg, arch_pop, acc_pop, data_loader, num_classes, num_genera
                               f"Kendall: {result['kendall']:.4f}, "
                               f"Spearman: {result['spearman']:.4f}, "
                               f"Pearson: {result['pearson']:.4f}")
+                    if best_fitness >= expected_kt:
+                        logger.info(f"[{time_str}] Best fitness {best_fitness:.4f} >= expected_kt {expected_kt:.4f}")
             else:
                 fitness_scores.append((candidate, float('-inf'), None))
         
@@ -153,7 +154,11 @@ def search_autoprox(cfg, arch_pop, acc_pop, data_loader, num_classes, num_genera
         
         # Mutation: mutate elite candidates
         while len(new_population) < pop_size:
-            parent = random.choice(elite)
+            # Handle empty elite case
+            if not elite:
+                parent = random.choice(population)
+            else:
+                parent = random.choice(elite)
             child = copy.deepcopy(parent)
             
             # Mutate input_geno
@@ -190,6 +195,7 @@ def parse_args():
     parser.add_argument('--acc_type', type=str, default='kd', help='Accuracy type: base, kd')
     parser.add_argument('--num_generations', type=int, default=5, help='Number of generations')
     parser.add_argument('--pop_size', type=int, default=10, help='Population size')
+    parser.add_argument('--expected_kt', type=float, default=0.0, help='Expected Kendall\'s tau')
     parser.add_argument('--save_dir', type=str, default='work_dirs/autoprox_search', help='Save directory')
     
     return parser.parse_args()
@@ -238,24 +244,28 @@ if __name__ == '__main__':
         cfg, arch_pop, acc_pop, data_loader, 
         cfg.MODEL.NUM_CLASSES, 
         num_generations=args.num_generations,
-        pop_size=args.pop_size
+        pop_size=args.pop_size,
+        expected_kt=args.expected_kt
     )
     t2 = time.time()
     
-    time_str = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime(time.time()))
-    logger.info(f"[{time_str}] Search Completed!")
-    logger.info("=" * 50)
-    logger.info(f"Best candidate: {best_candidate}")
-    logger.info(f"Best fitness (Kendall): {best_fitness:.4f}")
-    if best_candidate and 'results' in best_candidate:
-        logger.info(f"Kendall: {best_candidate['results']['kendall']:.4f}")
-        logger.info(f"Spearman: {best_candidate['results']['spearman']:.4f}")
-        logger.info(f"Pearson: {best_candidate['results']['pearson']:.4f}")
-    logger.info(f"Time cost: {(t2 - t1) / 3600:.2f} hours")
-    
-    # Save best candidate
-    best_candidate_file = os.path.join(save_dir, 'best_candidate.yaml')
-    with open(best_candidate_file, 'w') as f:
-        yaml.dump(best_candidate, f, default_flow_style=False)
-    
-    logger.info(f"Best candidate saved to: {best_candidate_file}")
+    if best_fitness > args.expected_kt:
+        time_str = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime(time.time()))
+        logger.info(f"[{time_str}] Search Completed!")
+        logger.info("=" * 50)
+        logger.info(f"Best candidate: {best_candidate}")
+        logger.info(f"Best fitness (Kendall): {best_fitness:.4f}")
+        if best_candidate and 'results' in best_candidate:
+            logger.info(f"Kendall: {best_candidate['results']['kendall']:.4f}")
+            logger.info(f"Spearman: {best_candidate['results']['spearman']:.4f}")
+            logger.info(f"Pearson: {best_candidate['results']['pearson']:.4f}")
+        logger.info(f"Time cost: {(t2 - t1) / 3600:.2f} hours")
+
+        # Save best candidate
+        best_candidate_file = os.path.join(save_dir, 'best_candidate.yaml')
+        with open(best_candidate_file, 'w') as f:
+            yaml.dump(best_candidate, f, default_flow_style=False)
+
+        logger.info(f"Best candidate saved to: {best_candidate_file}")
+    else:
+        shutil.rmtree(save_dir)

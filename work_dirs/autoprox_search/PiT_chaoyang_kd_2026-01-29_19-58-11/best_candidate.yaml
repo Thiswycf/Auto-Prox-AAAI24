@@ -1,0 +1,35 @@
+input_geno:
+- er
+- t2
+op_geno:
+- - 1.9308470370000872
+  - 1.9131648783009547
+repr_geno: INPUT:(er,t2)TREE:(element_wise_sqrt|frobenius_norm|element_wise_square)BINARY:(element_wise_sum)
+results:
+  fitness: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    G9uaP5wu4j8=
+  kendall: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    G9uaP5wu4j8=
+  pearson: 0.6263833848943035
+  spearman: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    FIQ3f35d6D8=
+type: tree

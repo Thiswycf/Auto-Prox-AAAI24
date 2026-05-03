@@ -1,0 +1,41 @@
+==================================================
+Auto-Prox Search with er in Search Space
+==================================================
+Model: AutoFormerSub
+Dataset: cifar100
+Accuracy type: kd
+Generations: 3
+Population size: 5
+[2026-01-29_19-58-34] Loaded 100 architectures
+Starting Auto-Prox search with er in search space...
+[2026-01-29_19-58-36] Generation 1/3
+[2026-01-29_19-58-36] Evaluating candidate 1/5: ['er', 'nwot']
+[2026-01-29_19-58-49] Evaluating candidate 2/5: ['er', 'nwot']
+[2026-01-29_20-15-15] New best candidate found! Fitness: 0.8054, Kendall: 0.8054, Spearman: 0.9477, Pearson: 0.9082
+[2026-01-29_20-15-15] Best fitness 0.8054 >= expected_kt 0.5600
+[2026-01-29_20-15-15] Evaluating candidate 3/5: ['er', 't2', 't4g']
+[2026-01-29_20-16-42] Evaluating candidate 4/5: ['er', 't2']
+[2026-01-29_20-32-16] Evaluating candidate 5/5: ['er', 'dss']
+[2026-01-29_20-47-44] Generation 2/3
+[2026-01-29_20-47-44] Evaluating candidate 1/5: ['er', 'nwot']
+[2026-01-29_21-06-45] New best candidate found! Fitness: 0.8220, Kendall: 0.8220, Spearman: 0.9536, Pearson: 0.9081
+[2026-01-29_21-06-45] Best fitness 0.8220 >= expected_kt 0.5600
+[2026-01-29_21-06-45] Evaluating candidate 2/5: ['er', 't2']
+[2026-01-29_21-22-17] Evaluating candidate 3/5: ['er', 'nwot']
+[2026-01-29_21-41-24] Evaluating candidate 4/5: ['er', 'nwot']
+[2026-01-29_21-41-38] Evaluating candidate 5/5: ['er', 't2']
+[2026-01-29_21-57-13] Generation 3/3
+[2026-01-29_21-57-13] Evaluating candidate 1/5: ['er', 'nwot']
+[2026-01-29_22-16-14] Evaluating candidate 2/5: ['er', 'nwot']
+[2026-01-29_22-35-14] Evaluating candidate 3/5: ['er', 'nwot']
+[2026-01-29_22-54-23] Evaluating candidate 4/5: ['er', 'nwot']
+[2026-01-29_23-13-39] Evaluating candidate 5/5: ['er', 'nwot']
+[2026-01-29_23-33-01] Search Completed!
+==================================================
+Best candidate: {'input_geno': ['er', 'nwot'], 'op_geno': [[1.8949746089575463, 0.8093293427920583]], 'repr_geno': 'INPUT:(er,nwot)TREE:(element_wise_square)BINARY:(element_wise_sub)', 'type': 'tree', 'results': {'kendall': 0.8220070778206549, 'spearman': 0.9536225542603729, 'pearson': 0.9080796191664124, 'fitness': 0.8220070778206549}}
+Best fitness (Kendall): 0.8220
+Kendall: 0.8220
+Spearman: 0.9536
+Pearson: 0.9081
+Time cost: 3.57 hours
+Best candidate saved to: work_dirs/autoprox_search/AutoFormerSub_cifar100_kd_2026-01-29_19-58-34/best_candidate.yaml

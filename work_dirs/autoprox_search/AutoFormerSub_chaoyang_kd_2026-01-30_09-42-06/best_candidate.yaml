@@ -1,0 +1,37 @@
+input_geno:
+- t2
+- dss
+- er
+op_geno:
+- - 0.2697282051958554
+  - 0.2629725193466306
+  - 0.9790459334291426
+repr_geno: INPUT:(t2,dss,er)TREE:(abs)BINARY:(element_wise_sum)
+results:
+  fitness: !!python/object/apply:numpy.core.multiarray.scalar
+  - &id001 !!python/object/apply:numpy.dtype
+    args:
+    - f8
+    - false
+    - true
+    state: !!python/tuple
+    - 3
+    - <
+    - null
+    - null
+    - null
+    - -1
+    - -1
+    - 0
+  - !!binary |
+    mjZEO+Xo2D8=
+  kendall: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    mjZEO+Xo2D8=
+  pearson: 0.5398845455118505
+  spearman: !!python/object/apply:numpy.core.multiarray.scalar
+  - *id001
+  - !!binary |
+    yKj3XgYl4T8=
+type: tree
